@@ -19,9 +19,9 @@ def recommend(movie):
         recommended_movies_posters.append(fetch_poster(movie_id))
     return recommended_movies,recommended_movies_posters
 
-movies_list=pickle.load(open('/Users/dhanyavenkatesh/Python/Machine_Learning/Machine_Learning/Movie Recommendation System/movies.pkl','rb'))
+movies_list=pickle.load(open('movies.pkl','rb'))
 movies=pd.DataFrame(movies_list)
-similarity=movies_list=pickle.load(open('/Users/dhanyavenkatesh/Python/Machine_Learning/Machine_Learning/Movie Recommendation System/similarity.pkl','rb'))
+similarity=movies_list=pickle.load(open('similarity.pkl','rb'))
 st.title('Movie Recommendation System')
 selected_moviename=st.selectbox('Select the Movie:',movies['title'].values)
 if st.button('Recommend'):
