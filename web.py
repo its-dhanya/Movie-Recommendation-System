@@ -19,9 +19,23 @@ def recommend(movie):
         recommended_movies_posters.append(fetch_poster(movie_id))
     return recommended_movies,recommended_movies_posters
 
-movies_list=pickle.load(open('Machine_Learning/Movie Recommendation System/movies.pkl','rb'))
+@st.cache
+def load_model():
+	  return pickle.load(open('Machine_Learning/Movie Recommendation System/movies.pkl','rb'))
+
+movies_list= load_model()
+@st.cache(hash_funcs={"MyUnhashableClass": lambda _: None}
+
+#movies_list=pickle.load(open('Machine_Learning/Movie Recommendation System/movies.pkl','rb'))
 movies=pd.DataFrame(movies_list)
-similarity=pickle.load(open('Machine_Learning/Movie Recommendation System/similarity.pkl','rb'))
+
+def load_model1():
+    return pickle.load(open('Machine_Learning/Movie Recommendation System/similarity.pkl','rb'))
+
+similarity=load_model1()
+@st.cache(hash_funcs={"MyUnhashableClass": lambda _: None}
+      
+#similarity=pickle.load(open('Machine_Learning/Movie Recommendation System/similarity.pkl','rb'))
 st.title('Movie Recommendation System')
 selected_moviename=st.selectbox('Select the Movie:',movies['title'].values)
 if st.button('Recommend'):
